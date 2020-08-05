@@ -29,7 +29,9 @@ namespace LabEleven
                     Console.WriteLine("Looks like there's something wrong with your input.");
                 }                
 
-            } while (MovieService.ContinueProgram());                      
+            } while (MovieService.ContinueProgram());
+
+            Console.WriteLine("Goodbye!");
         }        
     }
 }
