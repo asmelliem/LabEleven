@@ -14,26 +14,38 @@ namespace LabEleven
             movies.Add(new Movie("Weathering with You", "Animated"));
             movies.Add(new Movie("Rocketman", "Drama"));
             movies.Add(new Movie("Little Women", "Drama"));
-            movies.Add(new Movie("IT", "Horror"));
-            movies.Add(new Movie("The Conjuring", "Horror"));
             movies.Add(new Movie("The Grudge", "Horror"));
+            movies.Add(new Movie("The Conjuring", "Horror"));
+            movies.Add(new Movie("IT", "Horror"));
             movies.Add(new Movie("Star Wars", "Scifi"));
             movies.Add(new Movie("Minority Report", "Scifi"));
             return movies;
         }
 
-        public static StringBuilder ReturnMovieList(List<Movie> movies, string category)
+        public static List<string> ReturnMovieList(List<Movie> movies, int categoryChoice)
         {
-            StringBuilder movieList = new StringBuilder();
+            List<string> movieList = new List<string>();
+            var category = SetCategoryChoice(categoryChoice);
+
             foreach (var movie in movies)
             {
                 if (movie.Category == category)
                 {
-                    movieList.Append($"{movie.Title}\n");
+                    movieList.Add(movie.Title);
                 }
             }
-
             return movieList;
+        }        
+
+        public static StringBuilder PrintAlphabeticalMovieList(List<string> movieList)
+        {
+            StringBuilder sortedMovies = new StringBuilder();
+            movieList.Sort();
+            foreach(var movie in movieList)
+            {
+                sortedMovies.Append($"{movie}\n");
+            }
+            return sortedMovies;
         }
 
         public static string SetCategoryChoice(int input)
@@ -58,7 +70,7 @@ namespace LabEleven
 
         public static bool ContinueProgram()
         {
-            while(true)
+            while (true)
             {
                 Console.WriteLine("Would you like to continue? (y/n)");
                 var input = Console.ReadLine().ToUpper();
