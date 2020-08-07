@@ -6,24 +6,24 @@ namespace LabEleven
 {
     public class Movie
     {
-        private string title;
+        private string _title;
 
-        private string category;
+        private string _category;
 
         public string Title
         {
-            get { return title; }
+            get { return _title; }
         }
 
         public string Category
         {
-            get { return category; }
+            get { return _category; }
         }
 
         public Movie(string title, string category)
         {
-            this.title = title;
-            this.category = category;
+            this._title = title;
+            this._category = category;
         }
     }
 }
