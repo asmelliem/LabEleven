@@ -8,6 +8,7 @@ namespace LabEleven
     {
         public static void Main(string[] args)
         {
+            var movieService = new MovieService();
             do
             {
                 Console.WriteLine("Please select a category (1-4): \n" +
@@ -20,7 +21,7 @@ namespace LabEleven
                 
                 if(Validator.CheckCategoryChoice(input, out var categoryChoice))
                 {
-                    var movieList = MovieService.ReturnMovieList(MovieService.GenerateMovieList(), categoryChoice);
+                    var movieList = movieService.ReturnMovieList(categoryChoice);
                     Console.WriteLine("");
                     Console.WriteLine(MovieService.PrintAlphabeticalMovieList(movieList));
                 }
@@ -29,7 +30,7 @@ namespace LabEleven
                     Console.WriteLine("Looks like there's something wrong with your input.");
                 }                
 
-            } while (MovieService.ContinueProgram());
+            } while (Validator.ContinueProgram());
 
             Console.WriteLine("Goodbye!");
         }        

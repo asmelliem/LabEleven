@@ -6,6 +6,8 @@ namespace LabEleven
 {
     public class MovieService
     {
+        private List<Movie> movies = GenerateMovieList();
+
         public static List<Movie> GenerateMovieList()
         {
             List<Movie> movies = new List<Movie>();
@@ -22,7 +24,7 @@ namespace LabEleven
             return movies;
         }
 
-        public static List<string> ReturnMovieList(List<Movie> movies, int categoryChoice)
+        public List<string> ReturnMovieList(int categoryChoice)
         {
             List<string> movieList = new List<string>();
             var category = SetCategoryChoice(categoryChoice);
@@ -48,7 +50,7 @@ namespace LabEleven
             return sortedMovies;
         }
 
-        public static string SetCategoryChoice(int input)
+        public string SetCategoryChoice(int input)
         {
             if (input == 1)
             {
@@ -62,32 +64,16 @@ namespace LabEleven
             {
                 return "Horror";
             }
-            else
+            else if (input == 4)
             {
                 return "Scifi";
             }
-        }
-
-        public static bool ContinueProgram()
-        {
-            while (true)
+            else
             {
-                Console.WriteLine("Would you like to continue? (y/n)");
-                var input = Console.ReadLine().ToUpper();
-
-                if (input == "Y")
-                {
-                    return true;
-                }
-                else if (input == "N")
-                {
-                    return false;
-                }
-                else
-                {
-                    Console.WriteLine("You didn't enter a 'Y' or 'N'");
-                }
+                throw new NotImplementedException();
             }
         }
+
+        
     }
 }
